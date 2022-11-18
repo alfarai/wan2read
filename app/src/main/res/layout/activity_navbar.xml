@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!--
+        android:padding="15dp"
+        android:background="#000000"
+        -->
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/buttoncontainer">
+            <!--android:background="@drawable/customborder"-->
+
+            <TextView
+                android:id="@+id/w2r"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:filterTouchesWhenObscured="false"
+                android:fontFamily="casual"
+                android:text="W2R"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#5C46DB"
+                android:textSize="42sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/nav"
+                android:layout_width="65dp"
+                android:layout_height="67dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                app:srcCompat="@drawable/book_logo" />
+
+            <ImageView
+                android:id="@+id/settings"
+                android:layout_width="63dp"
+                android:layout_height="75dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                app:srcCompat="@android:drawable/ic_menu_manage" />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
