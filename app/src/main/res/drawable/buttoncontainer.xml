@@ -2,7 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:top="650dp">
+        android:top="575dp">
 
         <shape xmlns:android="http://schemas.android.com/apk/res/android">
             <stroke android:width="3dp" android:color="#5C46DB" />
@@ -18,27 +18,27 @@
 
     </item>
 
-    <item
-        android:top="639.8dp"
-        android:left="125dp"
-        android:right="105dp"
-        android:bottom="-4dp"
-        >
-        <shape xmlns:android="http://schemas.android.com/apk/res/android"
-            android:shape="rectangle">
-            <size
-                android:width="30dp"
-                android:height="30dp"></size>
+<!--    <item-->
+<!--        android:top="639.8dp"-->
+<!--        android:left="125dp"-->
+<!--        android:right="105dp"-->
+<!--        android:bottom="-4dp"-->
+<!--        >-->
+<!--        <shape xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--            android:shape="rectangle">-->
+<!--            <size-->
+<!--                android:width="200dp"-->
+<!--                android:height="200dp"></size>-->
 
-            <solid
-                android:color="@color/teal_200"/>
-            <corners
-                android:topLeftRadius="200dp"
-                android:bottomLeftRadius="200dp"
-                android:topRightRadius="200dp"
-                android:bottomRightRadius="200dp"
-                />
-            <stroke android:width="5px" android:color="@color/white" />
-        </shape>
-    </item>
+<!--            <solid-->
+<!--                android:color="@color/teal_200"/>-->
+<!--            <corners-->
+<!--                android:topLeftRadius="200dp"-->
+<!--                android:bottomLeftRadius="200dp"-->
+<!--                android:topRightRadius="200dp"-->
+<!--                android:bottomRightRadius="200dp"-->
+<!--                />-->
+<!--            <stroke android:width="5px" android:color="@color/white" />-->
+<!--        </shape>-->
+<!--    </item>-->
 </layer-list>
