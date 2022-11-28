@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Wan2Read Digital Library</string>
+    <string-array name="arrayFontSizes">
+        <item>12</item>
+        <item>14</item>
+        <item>16</item>
+        <item>18</item>
+        <item>20</item>
+    </string-array>
 </resources>
