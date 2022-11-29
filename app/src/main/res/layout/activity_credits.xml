@@ -15,7 +15,113 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <include android:layout="@layout/activity_navbar"/>
+            <ImageView
+                android:id="@+id/male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lachica"
+                android:layout_centerInParent="false"
+                android:layout_centerHorizontal="false"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                tools:ignore="ImageContrastCheck"
+                android:src="@drawable/book_logo" /> <!--book logo is temporary, change tools:srcCompat to this-->
+
+            <ImageView
+                android:id="@+id/velasco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/male"
+                android:layout_centerInParent="false"
+                android:layout_centerHorizontal="false"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <ImageView
+                android:id="@+id/lachica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="false"
+                android:layout_centerHorizontal="false"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                tools:srcCompat="@tools:sample/avatars[3]" />
+
+            <TextView
+                android:id="@+id/lachicadesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lachicaname"
+                android:layout_alignParentBottom="false"
+                android:layout_marginLeft="190dp"
+                android:layout_marginTop="10dp"
+                android:text="Developer"
+                android:textColor="#5C46DB"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lachicaname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="190dp"
+                android:layout_marginTop="60dp"
+                android:text="Lachica, Raymart"
+                android:textColor="#5C46DB"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/malename"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="190dp"
+                android:layout_marginTop="240dp"
+                android:text="Male, Benito"
+                android:textColor="#5C46DB"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/maledesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/malename"
+                android:layout_marginLeft="190dp"
+                android:layout_marginTop="10dp"
+                android:text="Developer"
+                android:textColor="#5C46DB"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/velascodesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/velasconame"
+                android:layout_marginLeft="190dp"
+                android:layout_marginTop="10dp"
+                android:text="Developer"
+                android:textColor="#5C46DB"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/velasconame"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="190dp"
+                android:layout_marginTop="420dp"
+                android:text="Velasco, Jared"
+                android:textColor="#5C46DB"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <include layout="@layout/activity_navbar" />
         </RelativeLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
