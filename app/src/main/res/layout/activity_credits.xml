@@ -17,39 +17,40 @@
 
             <ImageView
                 android:id="@+id/male"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="125dp"
                 android:layout_below="@id/lachica"
                 android:layout_centerInParent="false"
                 android:layout_centerHorizontal="false"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
+                android:src="@drawable/book_logo"
                 tools:ignore="ImageContrastCheck"
-                android:src="@drawable/book_logo" /> <!--book logo is temporary, change tools:srcCompat to this-->
+                tools:srcCompat="@drawable/male__benito" /> <!--book logo is temporary, change tools:srcCompat to this-->
 
             <ImageView
                 android:id="@+id/velasco"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="140dp"
+                android:layout_height="125dp"
                 android:layout_below="@id/male"
                 android:layout_centerInParent="false"
                 android:layout_centerHorizontal="false"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/img_3349__1_" />
 
             <ImageView
                 android:id="@+id/lachica"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="140dp"
+                android:layout_height="125dp"
                 android:layout_centerInParent="false"
                 android:layout_centerHorizontal="false"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
-                tools:srcCompat="@tools:sample/avatars[3]" />
+                tools:srcCompat="@drawable/img_5681" />
 
             <TextView
                 android:id="@+id/lachicadesc"

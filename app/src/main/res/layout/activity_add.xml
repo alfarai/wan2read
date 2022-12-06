@@ -50,15 +50,13 @@
             android:minHeight="48dp"
             tools:ignore="SpeakableTextPresentCheck" />
 
-        <TextView
-            android:id="@+id/uploadlabel"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/uploadbtn"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/topiclabel"
-            android:layout_marginTop="20dp"
-            android:text="Upload PDF:"
-            android:textSize="20sp" />
-<!-- https://developer.android.com/training/data-storage/shared/documents-files#java -->
+            android:text="Upload PDF" />
+
         <include layout="@layout/activity_navbar" />
     </RelativeLayout>
 
