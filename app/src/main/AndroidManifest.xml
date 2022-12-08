@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Wan2ReadDigitalLibrary"
         tools:targetApi="31">
         <activity
-            android:name=".add"
+            android:name=".Settings"
             android:exported="true" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
