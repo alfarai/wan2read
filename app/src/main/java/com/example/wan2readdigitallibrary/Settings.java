@@ -5,14 +5,19 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.fonts.Font;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 
@@ -23,6 +28,9 @@ public class Settings extends AppCompatActivity{
 
     private Switch switchBtn;
     private LinearLayout layout;
+
+    private ImageView imgBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +76,42 @@ public class Settings extends AppCompatActivity{
         });
 
 
+        View navbarView = (View) findViewById(R.id.navbar); //retrieve the id in <include>
+        imgBtn = (ImageView) navbarView.findViewById(R.id.nav); //retrieve imgBtn from navbar.xml
+
+        //for showing menu items
+        PopupMenu popupMenu = new PopupMenu(this, imgBtn);
+        popupMenu.getMenuInflater().inflate(R.menu.navitems, popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent i;
+                switch (item.getItemId()) {
+                    case R.id.menu_library:
+                        i = new Intent(Settings.this,Library.class);
+                        startActivity(i);
+                        break;
+                    case R.id.menu_view:
+                        break;
+                    case R.id.menu_add:
+                        i = new Intent(Settings.this,add.class);
+                        startActivity(i);
+                        break;
+                    case R.id.menu_credits:
+                        i = new Intent(Settings.this,Credits.class);
+                        startActivity(i);
+                        break;
+                }
+                return true;
+            }
+        });
+        imgBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupMenu.show();
+            }
+        });
+
+
     }
     /*
     Check preferences and set them (called in onCreate())
@@ -83,6 +127,7 @@ public class Settings extends AppCompatActivity{
     }
 
 }
+
 
 class FontSize extends Activity implements AdapterView.OnItemSelectedListener{
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id){

@@ -36,7 +36,11 @@
                     android:spinnerMode="dropdown"/>
             </LinearLayout>
 
-            <include layout="@layout/activity_navbar" />
+            <include
+                layout="@layout/activity_navbar"
+                android:id="@+id/navbar"
+                android:clickable="true"
+                android:focusable="true"/>
 
         </RelativeLayout>
     </LinearLayout>
