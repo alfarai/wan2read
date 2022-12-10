@@ -7,8 +7,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.fonts.Font;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,7 +15,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 
@@ -75,6 +72,7 @@ public class Settings extends AppCompatActivity{
             }
         });
 
+//this block of code is copypasted for all activities to make navbar functionable
 
         View navbarView = (View) findViewById(R.id.navbar); //retrieve the id in <include>
         imgBtn = (ImageView) navbarView.findViewById(R.id.nav); //retrieve imgBtn from navbar.xml
@@ -93,7 +91,7 @@ public class Settings extends AppCompatActivity{
                     case R.id.menu_view:
                         break;
                     case R.id.menu_add:
-                        i = new Intent(Settings.this,add.class);
+                        i = new Intent(Settings.this, Add.class);
                         startActivity(i);
                         break;
                     case R.id.menu_credits:
@@ -111,6 +109,7 @@ public class Settings extends AppCompatActivity{
             }
         });
 
+//----------------
 
     }
     /*
