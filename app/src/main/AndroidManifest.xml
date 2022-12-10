@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.wan2readdigitallibrary">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,27 +17,26 @@
         android:theme="@style/Theme.Wan2ReadDigitalLibrary"
         tools:targetApi="31">
         <activity
+            android:name=".View"
+            android:exported="false" />
+        <activity
             android:name=".Library"
             android:exported="true" />
         <activity
             android:name=".Settings"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".Credits"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".Add"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".Navbar"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

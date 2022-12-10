@@ -89,6 +89,8 @@ public class Settings extends AppCompatActivity{
                         startActivity(i);
                         break;
                     case R.id.menu_view:
+                        i = new Intent(Settings.this,View.class);
+                        startActivity(i);
                         break;
                     case R.id.menu_add:
                         i = new Intent(Settings.this, Add.class);

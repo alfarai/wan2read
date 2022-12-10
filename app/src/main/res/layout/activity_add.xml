@@ -57,6 +57,7 @@
             android:layout_below="@id/topiclabel"
             android:text="Upload PDF" />
 
+
         <include layout="@layout/activity_navbar" />
     </RelativeLayout>
 

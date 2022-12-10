@@ -33,6 +33,8 @@ public class Credits extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case R.id.menu_view:
+                        i = new Intent(Credits.this, View.class);
+                        startActivity(i);
                         break;
                     case R.id.menu_add:
                         i = new Intent(Credits.this, Add.class);

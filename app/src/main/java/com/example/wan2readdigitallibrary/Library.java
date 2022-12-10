@@ -33,6 +33,8 @@ public class Library extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case R.id.menu_view:
+                        i = new Intent(Library.this,View.class);
+                        startActivity(i);
                         break;
                     case R.id.menu_add:
                         i = new Intent(Library.this, Add.class);
