@@ -18,6 +18,11 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String KEY_TOP = "topic";
     private static final String KEY_NAME = "name";
 
+    /*
+    * Perhaps we save the file destination of the pdf file in the string Name?
+    * */
+
+
     public DBHandler (Context context) {
         super(context,DB_Name,null, DB_VERSION);
     }

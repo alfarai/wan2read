@@ -17,7 +17,10 @@ import java.io.IOException;
 
 public class View extends AppCompatActivity {
     public static final int PICK_FILE = 99;
-
+    /*
+    *   https://stackoverflow.com/questions/48947034/i-want-to-open-pdf-file-in-my-application
+    *   Will this do for this type of application?
+    * */
 
     PdfRenderer renderer;
     int display_page = 0;
