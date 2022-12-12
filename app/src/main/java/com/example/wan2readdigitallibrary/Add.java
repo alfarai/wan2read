@@ -5,17 +5,23 @@ import androidx.activity.result.ActivityResultLauncher;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.pdf.PdfRenderer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.ParcelFileDescriptor;
 import android.provider.DocumentsContract;
 import android.provider.OpenableColumns;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -55,7 +61,6 @@ public class Add extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
         Button uploadBtn = findViewById(R.id.uploadbtn);
-
         uploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,6 +71,7 @@ public class Add extends AppCompatActivity {
                 startActivityForResult(intent, PICK_FILE);
             }
         });
+        Log.d("create","bbb");
         //this block of code is copypasted for all activities to make navbar functionable
 
         View navbarView = (View) findViewById(R.id.navbar); //retrieve the id in <include>
@@ -108,26 +114,35 @@ public class Add extends AppCompatActivity {
 //----------------
 
     }
-    private void copyFileUsingStream(File source) throws IOException {
-        FileInputStream is = null;
-        FileOutputStream os = null;
-        try {
-            is = new FileInputStream(source);
-            os = openFileOutput("test.pdf",MODE_PRIVATE);
-            byte[] buffer = new byte[1024];
-            int length;
-            while ((length = is.read(buffer)) > 0) {
-                os.write(buffer, 0, length);
-            }
+    private boolean copyFile(Uri src)throws IOException{
 
-        } finally {
-            if (is != null){
-                is.close();
+//        if(src.getAbsolutePath().toString().equals(dst.getAbsolutePath().toString())){
+//
+//            return true;
+//
+//        }else{
+        if(checkPerms(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            File dir = new File(Environment.getExternalStorageDirectory(), "test.pdf");
+            InputStream is = getContentResolver().openInputStream(src);
+            FileOutputStream os = new FileOutputStream(dir);
+            byte[] buff = new byte[1024];
+            int len;
+
+            while ((len = is.read(buff)) > 0) {
+
+                os.write(buff, 0, len);
             }
-            if (os != null){
-                os.close();
-            }
+            is.close();
+            os.close();
+            Toast.makeText(getBaseContext(), "File saved successfully!",
+                    Toast.LENGTH_SHORT).show();
+            //}
         }
+        return true;
+    }
+    public boolean checkPerms(String perms){
+        int check = ContextCompat.checkSelfPermission(this,perms);
+        return (check == PackageManager.PERMISSION_GRANTED);
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent resultData){
@@ -140,14 +155,13 @@ public class Add extends AppCompatActivity {
                 //intent.putExtra(extra_PDF_FILE_URI,String.valueOf(resultData.getData()));
 
 
-                File source = new File(String.valueOf(resultData.getData()));
+//                File source = new File(resultData.getData().toString());
 
 
                 try{
 
-                    copyFileUsingStream(source);
-                    Toast.makeText(getBaseContext(), "File saved successfully!",
-                            Toast.LENGTH_SHORT).show();
+                    copyFile(resultData.getData());
+
 
                 }catch(IOException e){
                     e.printStackTrace();
