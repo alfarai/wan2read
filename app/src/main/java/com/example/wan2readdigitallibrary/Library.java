@@ -66,32 +66,14 @@ public class Library extends AppCompatActivity {
         });
 
 //----------------
-        List<String> fileList = new ArrayList<String>();
 
-        File mydir = this.getDir("Myfolder", Context.MODE_PRIVATE);
-        File listFile[] = mydir.listFiles();
 
-        if (listFile != null && listFile.length > 0) {
-
-            for (File aListFile : listFile) {
-
-                if (aListFile.isDirectory()) {
-                    fileList.add(aListFile.getName());
-
-                } else {
-                    if (aListFile.isFile()) ;
-                    {
-                        fileList.add(aListFile.getName());
-                    }
-                }
-            }
-        }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, fileList);
+                android.R.layout.simple_list_item_1, android.R.id.text1, getPdfFiles(Environment.getExternalStorageDirectory()));
         ListView listView = (ListView) findViewById(R.id.listFiles);
         listView.setAdapter(adapter);
 
-       getAllDir(Environment.getExternalStorageDirectory());//temp code to check external storage (see logcat)
+       //getAllDir(Environment.getExternalStorageDirectory());//temp code to check external storage (see logcat)
     }
     public void getAllDir(File dir) {
         String pdfPattern = ".pdf";
@@ -114,5 +96,41 @@ public class Library extends AppCompatActivity {
         else
             Toast.makeText(getBaseContext(), "aaaaa!",
                     Toast.LENGTH_SHORT).show();
+    }
+    public List<String> getPdfFiles(File dir){
+        String pdfPattern = ".pdf";
+
+        List<String> fileList = new ArrayList<String>();
+        File listFile[] = dir.listFiles();
+
+        if (listFile != null) {
+            for (int i = 0; i < listFile.length; i++) {
+
+                if (listFile[i].isDirectory()) {
+                    getPdfFiles(listFile[i]);
+                } else {
+                    if (listFile[i].getName().endsWith(pdfPattern)){
+                        fileList.add(listFile[i].getName());
+//                        if (listFile != null && listFile.length > 0) {
+//
+//                            for (File aListFile : listFile) {
+//
+//                                if (aListFile.isDirectory()) {
+//                                    fileList.add(aListFile.getName());
+//
+//                                } else {
+//                                    if (aListFile.isFile())
+//                                    {
+//                                        fileList.add(aListFile.getName());
+//                                    }
+//                                }
+//                            }
+//                        }
+
+                    }
+                }
+            }
+        }
+        return fileList;
     }
 }

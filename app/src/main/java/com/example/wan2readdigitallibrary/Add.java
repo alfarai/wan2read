@@ -114,6 +114,28 @@ public class Add extends AppCompatActivity {
 //----------------
 
     }
+    @SuppressLint("Range")
+    public String getFileName(Uri uri) {
+        String result = null;
+        if (uri.getScheme().equals("content")) {
+            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+            try {
+                if (cursor != null && cursor.moveToFirst()) {
+                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                }
+            } finally {
+                cursor.close();
+            }
+        }
+        if (result == null) {
+            result = uri.getPath();
+            int cut = result.lastIndexOf('/');
+            if (cut != -1) {
+                result = result.substring(cut + 1);
+            }
+        }
+        return result;
+    }
     private boolean copyFile(Uri src)throws IOException{
 
 //        if(src.getAbsolutePath().toString().equals(dst.getAbsolutePath().toString())){
@@ -122,7 +144,7 @@ public class Add extends AppCompatActivity {
 //
 //        }else{
         if(checkPerms(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            File dir = new File(Environment.getExternalStorageDirectory(), "test.pdf");
+            File dir = new File(Environment.getExternalStorageDirectory(), getFileName(src));
             InputStream is = getContentResolver().openInputStream(src);
             FileOutputStream os = new FileOutputStream(dir);
             byte[] buff = new byte[1024];
