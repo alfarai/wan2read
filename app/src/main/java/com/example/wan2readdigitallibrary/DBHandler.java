@@ -14,8 +14,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String DB_Name = "librarydb";
     private static final String TABLE_books = "librarydetails";
     private static final String KEY_ID = "id";
-    private static final String KEY_SECT = "section";
-    private static final String KEY_TOP = "topic";
+    private static final String KEY_SUBJ = "subject";
     private static final String KEY_NAME = "name";
 
     /*
@@ -30,8 +29,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE = "CREATE TABLE " + TABLE_books + "("
                 + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + KEY_SECT + " TEXT,"
-                + KEY_TOP + " TEXT,"
+                + KEY_SUBJ + " TEXT,"
                 + KEY_NAME + " TEXT"+ ")";
         db.execSQL(CREATE_TABLE);
     }
@@ -45,14 +43,13 @@ public class DBHandler extends SQLiteOpenHelper {
     /* CRUD Operations */
 
     // Add Book
-    void insertBookDetails(String section, String topic, String name){
+    void insertBookDetails(String subject, String name){
         //Get the Data Repository in write mode
         SQLiteDatabase db = this.getWritableDatabase();
 
         //Create a new map of values, where column names are the keys
         ContentValues cValues = new ContentValues();
-        cValues.put(KEY_SECT, section);
-        cValues.put(KEY_TOP, topic);
+        cValues.put(KEY_SUBJ, subject);
         cValues.put(KEY_NAME, name);
 
         // Insert the new row, returning the primary key value of the new row
@@ -65,13 +62,12 @@ public class DBHandler extends SQLiteOpenHelper {
     public ArrayList<HashMap<String, String>> GetBooks(){
         SQLiteDatabase db = this.getWritableDatabase();
         ArrayList<HashMap<String, String>> bookList = new ArrayList<>();
-        String query = "SELECT section, topic, name FROM "+
+        String query = "SELECT subject, name FROM "+
                 TABLE_books;
         Cursor cursor = db.rawQuery(query,null);
         while (cursor.moveToNext()){
             HashMap<String,String> book = new HashMap<>();
-            book.put("section",cursor.getString(cursor.getColumnIndex(KEY_SECT)));
-            book.put("topic",cursor.getString(cursor.getColumnIndex(KEY_TOP)));
+            book.put("subject",cursor.getString(cursor.getColumnIndex(KEY_SUBJ)));
             book.put("name",cursor.getString(cursor.getColumnIndex(KEY_NAME)));
             bookList.add(book);
         }
@@ -83,15 +79,14 @@ public class DBHandler extends SQLiteOpenHelper {
     public ArrayList<HashMap<String, String>> GetBookbyBookId(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         ArrayList<HashMap<String, String>> bookList = new ArrayList<>();
-        String query = "SELECT section, topic, name FROM "+
+        String query = "SELECT subject, name FROM "+
                 TABLE_books;
-        Cursor cursor = db.query(TABLE_books, new String[]{KEY_SECT, KEY_TOP, KEY_NAME},
+        Cursor cursor = db.query(TABLE_books, new String[]{KEY_SUBJ, KEY_NAME},
                 KEY_ID+ "=?",new String[]{String.valueOf(id)},
                 null, null, null, null);
         if (cursor.moveToNext()){
             HashMap<String,String> book = new HashMap<>();
-            book.put("section",cursor.getString(cursor.getColumnIndex(KEY_SECT)));
-            book.put("topic",cursor.getString(cursor.getColumnIndex(KEY_TOP)));
+            book.put("subject",cursor.getString(cursor.getColumnIndex(KEY_SUBJ)));
             book.put("name",cursor.getString(cursor.getColumnIndex(KEY_NAME)));
             bookList.add(book); }
         return bookList;
@@ -106,10 +101,10 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     // Update Book Details - Implement if necessary
-    public int UpdateBookDetails(String section, String topic, int id){
+    public int UpdateBookDetails(String subject, String topic, int id){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cVals = new ContentValues();
-        cVals.put(KEY_SECT, section); cVals.put(KEY_TOP, topic);
+        cVals.put(KEY_SUBJ, subject);
         int count = db.update(TABLE_books, cVals, KEY_ID+" = ?",
                 new String[]{String.valueOf(id)});
         return count;

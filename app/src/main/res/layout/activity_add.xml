@@ -8,15 +8,13 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/addtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add PDF"
+            android:text="Manage PDF"
             android:textAllCaps="false"
             android:textSize="30sp" />
 
@@ -28,22 +26,24 @@
             android:background="#5c46db" />
 
         <TextView
-            android:id="@+id/topiclabel"
+            android:id="@+id/subjectlabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/addtitle"
             android:layout_marginTop="20dp"
-            android:text="Topic Name:"
+            android:text="Subject Name:"
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/topicedit"
+            android:id="@+id/subjectedit"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/separator"
-            android:layout_alignEnd="@id/topiclabel"
+            android:layout_alignEnd="@id/subjectlabel"
             android:layout_alignParentRight="false"
             android:layout_alignParentBottom="false"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="14dp"
             android:layout_marginRight="45dp"
             android:ems="10"
             android:inputType="textPersonName"
@@ -54,11 +54,25 @@
             android:id="@+id/uploadbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/topiclabel"
+            android:layout_below="@id/subjectlabel"
             android:text="Upload PDF" />
 
 
-        <include layout="@layout/activity_navbar" />
+        <Button
+            android:id="@+id/deleteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="89dp"
+            android:layout_toEndOf="@+id/uploadbtn"
+            android:text="Delete PDF" />
+
     </RelativeLayout>
+
+    <include
+        layout="@layout/activity_navbar"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="731dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
