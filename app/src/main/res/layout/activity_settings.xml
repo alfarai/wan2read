@@ -29,11 +29,13 @@
                     android:textSize="24sp" />
 
                 //This is for the drop down menu for font size
+
                 <Spinner
                     android:id="@+id/btnFontSize"
                     android:layout_width="match_parent"
                     android:layout_height="43dp"
-                    android:spinnerMode="dropdown"/>
+                    android:spinnerMode="dropdown"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
             </LinearLayout>
 
             <include

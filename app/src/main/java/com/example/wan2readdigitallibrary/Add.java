@@ -98,7 +98,6 @@ public class Add extends AppCompatActivity {
         });
 
 
-        Log.d("create","bbb");
         //this block of code is copypasted for all activities to make navbar functionable
 
         View navbarView = (View) findViewById(R.id.navbar); //retrieve the id in <include>

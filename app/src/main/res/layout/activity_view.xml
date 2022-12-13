@@ -6,14 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".View">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <include
-            layout="@layout/activity_navbar"
+        <Button
+            android:id="@+id/prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="false"
+            android:layout_marginStart="110dp"
+            android:layout_marginEnd="10dp"
+            android:text="Prev"
+            android:layout_above="@+id/imageView3"/>
+        <Button
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="false"
+            android:layout_toRightOf="@id/prev"
+            android:text="Next" />
+
+        <ImageView
+            android:id="@+id/imageView3"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/prev"
+            android:layout_margin="8dp"
+
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

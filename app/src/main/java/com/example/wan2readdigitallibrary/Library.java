@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
@@ -92,6 +94,18 @@ public class Library extends AppCompatActivity {
                 android.R.layout.simple_list_item_1, android.R.id.text1, getPdfFiles(Environment.getExternalStorageDirectory()));
         ListView listView = (ListView) findViewById(R.id.listFiles);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            public void onItemClick(AdapterView<?> arg0,View arg1, int position, long arg3)
+            {
+                String selectedFromList = (String) (listView.getItemAtPosition(position));
+                //Log.d("test",selectedFromList);
+                Intent intent = new Intent("com.example.wan2readdigitallibrary.View");
+                //Log.d("test",getPdfUriOfFile(selectedFromList).toString());
+                intent.putExtra("fileUri", getPdfUriOfFile(selectedFromList).toString());
+                startActivity(intent);
+            }
+        });
 
        //getAllDir(Environment.getExternalStorageDirectory());//temp code to check external storage (see logcat)
     }
@@ -116,6 +130,25 @@ public class Library extends AppCompatActivity {
         else
             Toast.makeText(getBaseContext(), "aaaaa!",
                     Toast.LENGTH_SHORT).show();
+    }
+    public Uri getPdfUriOfFile(String filename){
+//        Uri uri;
+//        File listFile[] = dir.listFiles();
+//
+//        if (listFile != null) {
+//            for (int i = 0; i < listFile.length; i++) {
+//
+//                if (listFile[i].isDirectory()) {
+//                    getPdfUriOfFile(filename,listFile[i]);
+//                } else {
+//                    if (listFile[i].getName().startsWith(filename)) {
+//                        uri = listFile[i].toURI();
+//                    }
+//                }
+//            }
+//        }
+        return Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/" + filename + "/"));
+
     }
     public List<String> getPdfFiles(File dir){
         String pdfPattern = ".pdf";
