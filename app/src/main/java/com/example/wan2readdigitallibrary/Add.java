@@ -43,6 +43,9 @@ public class Add extends AppCompatActivity {
     public static final int PICK_FILE = 99;
 
     private ImageView imgBtn;
+    EditText subj, pageNo;
+    Button uploadBtn, deleteBtn, addBtn, viewBookmarkBtn;
+    DBHandler dbHandler;
 
 
     private void openFile(Uri pickerInitialUri) {
@@ -61,11 +64,19 @@ public class Add extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-        EditText subj = findViewById(R.id.subjectedit);
-        Button uploadBtn = findViewById(R.id.uploadbtn);
-        Button deleteBtn = findViewById(R.id.deleteBtn);
 
+        //drawables
+        subj = findViewById(R.id.subjectedit);
+        pageNo = findViewById(R.id.pageNumEdit);
+        uploadBtn = findViewById(R.id.uploadbtn);
+        deleteBtn = findViewById(R.id.deleteBtn);
+        addBtn = findViewById(R.id.addBtn);
+        viewBookmarkBtn = findViewById(R.id.viewBookmarkBtn);
 
+        //database
+        dbHandler = new DBHandler(this);
+
+        //For upload PDF Files
         uploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,17 +85,30 @@ public class Add extends AppCompatActivity {
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("application/pdf");
                 startActivityForResult(intent, PICK_FILE);
-
-                //Database Insertion
-                String subject = subj.getText().toString();
-                DBHandler dbHandler = new DBHandler(Add.this);
-                dbHandler.insertBookDetails(subject, "test");
-                Toast.makeText(getApplicationContext(),
-                        "PDF Inserted", Toast.LENGTH_SHORT).show();
             }
         });
 
-        //For removal of subject in db
+        //For adding Bookmarks
+        addBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+               String subjectTxt = subj.getText().toString();
+               int pageNumTxt = Integer.parseInt(String.valueOf(pageNo.getText()));
+
+               Boolean checkinsertBook = dbHandler.insertBookDetails(subjectTxt, pageNumTxt);
+               if (checkinsertBook == true){
+                   Toast.makeText(getApplicationContext(),
+                           "Page sucessfully marked", Toast.LENGTH_SHORT).show();
+               }
+               else{
+                   Toast.makeText(getApplicationContext(),
+                           "Page not marked", Toast.LENGTH_SHORT).show();
+               }
+            }
+        });
+
+
+        //For removal of bookmarks in db
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
@@ -97,6 +121,12 @@ public class Add extends AppCompatActivity {
 
         });
 
+        viewBookmarkBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Add.this, bookmarkList.class));
+            }
+        });
 
         //this block of code is copypasted for all activities to make navbar functionable
 

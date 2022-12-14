@@ -32,21 +32,6 @@ public class Library extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library);
 
-        /*This will display the content of the database onto the library
-            We also need to show the book ID in order to know which subject + PDF will be specifically deleted
-            duplicate subject values may be observed, dislaying ID will remove that issue
-        */
-
-        DBHandler db = new DBHandler(this);
-
-        /*
-        ArrayList <HashMap<String, String>> bookList = db.GetBooks();
-        ListView lv = (ListView) findViewById(R.id.listFiles);
-        ListAdapter adapter = new SimpleAdapter(Library.this, bookList, R.layout.list_row,
-                new String[]{"subject","name"},
-                new int[]{R.id.bookSubject, R.id.bookName});
-        lv.setAdapter(adapter);
-        */
 
         //this block of code is copypasted for all activities to make navbar functionable
 

@@ -8,7 +8,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-182dp">
 
         <TextView
             android:id="@+id/addtitle"
@@ -50,29 +52,63 @@
             android:minHeight="48dp"
             tools:ignore="SpeakableTextPresentCheck" />
 
+
+        <TextView
+            android:id="@+id/pageNumLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/subjectlabel"
+            android:layout_marginTop="20dp"
+            android:text="Page No."
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/pageNumEdit"
+            android:layout_width="247dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/subjectlabel"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
         <Button
             android:id="@+id/uploadbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/subjectlabel"
+            android:layout_below="@+id/pageNumLabel"
+            android:layout_marginTop="19dp"
             android:text="Upload PDF" />
 
+        <Button
+            android:id="@+id/addBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/uploadbtn"
+            android:layout_marginTop="7dp"
+            android:text="Add Bookmark" />
 
         <Button
             android:id="@+id/deleteBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="9dp"
-            android:layout_marginTop="89dp"
-            android:layout_toEndOf="@+id/uploadbtn"
-            android:text="Delete PDF" />
+            android:layout_below="@+id/addBtn"
+            android:layout_marginTop="6dp"
+            android:text="Delete Bookmark" />
+
+        <Button
+            android:id="@+id/viewBookmarkBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/deleteBtn"
+            android:layout_marginTop="8dp"
+            android:text="View Bookmarks" />
 
     </RelativeLayout>
 
     <include
         layout="@layout/activity_navbar"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteY="731dp" />
+        android:layout_height="wrap_content" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
