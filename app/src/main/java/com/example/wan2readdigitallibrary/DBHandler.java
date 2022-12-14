@@ -70,10 +70,10 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     //Delete Book Details
-    public void DeleteBook(int id){
+    public void DeleteBook(String subject){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_books, "id = ?",
-                new String[]{String.valueOf(id)});
+        db.delete(TABLE_books, "subject = ?",
+                new String[]{subject});
         db.close();
     }
 

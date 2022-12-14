@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Library extends AppCompatActivity {
-    private ImageView imgBtn;
+    private ImageView imgBtn,settingsBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,14 @@ public class Library extends AppCompatActivity {
 
         View navbarView = (View) findViewById(R.id.navbar); //retrieve the id in <include>
         imgBtn = (ImageView) navbarView.findViewById(R.id.nav); //retrieve imgBtn from navbar.xml
-
+        settingsBtn = (ImageView)navbarView.findViewById(R.id.settings);
+        settingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Library.this,Settings.class);
+                startActivity(intent);
+            }
+        });
         //for showing menu items
         PopupMenu popupMenu = new PopupMenu(this, imgBtn);
         popupMenu.getMenuInflater().inflate(R.menu.navitems, popupMenu.getMenu());
@@ -49,16 +56,16 @@ public class Library extends AppCompatActivity {
                         i = new Intent(Library.this,Library.class);
                         startActivity(i);
                         break;
-                    case R.id.menu_view:
-                        i = new Intent(Library.this,View.class);
-                        startActivity(i);
-                        break;
                     case R.id.menu_add:
                         i = new Intent(Library.this, Add.class);
                         startActivity(i);
                         break;
                     case R.id.menu_credits:
                         i = new Intent(Library.this,Credits.class);
+                        startActivity(i);
+                        break;
+                    case R.id.menu_bookmark:
+                        i = new Intent(Library.this, bookmarkList.class);
                         startActivity(i);
                         break;
                 }

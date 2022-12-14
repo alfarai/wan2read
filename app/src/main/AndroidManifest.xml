@@ -39,11 +39,12 @@
             android:exported="true" />
         <activity
             android:name=".Credits"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Credits"/>
         <activity
             android:name=".Add"
             android:exported="true"
-            android:label="Add" />
+            android:label="Manage PDF" />
         <activity
             android:name=".Navbar"
             android:exported="true" />

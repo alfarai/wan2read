@@ -12,26 +12,12 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="-182dp">
 
-        <TextView
-            android:id="@+id/addtitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Manage PDF"
-            android:textAllCaps="false"
-            android:textSize="30sp" />
 
-        <View
-            android:id="@+id/separator"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_below="@id/addtitle"
-            android:background="#5c46db" />
 
         <TextView
             android:id="@+id/subjectlabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/addtitle"
             android:layout_marginTop="20dp"
             android:text="Subject Name:"
             android:textSize="20sp" />
@@ -40,7 +26,6 @@
             android:id="@+id/subjectedit"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/separator"
             android:layout_alignEnd="@id/subjectlabel"
             android:layout_alignParentRight="false"
             android:layout_alignParentBottom="false"
@@ -78,6 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/pageNumLabel"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="19dp"
             android:text="Upload PDF" />
 
@@ -86,6 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/uploadbtn"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="7dp"
             android:text="Add Bookmark" />
 
@@ -94,6 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/addBtn"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="6dp"
             android:text="Delete Bookmark" />
 
@@ -102,6 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/deleteBtn"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"
             android:text="View Bookmarks" />
 
@@ -109,6 +98,7 @@
 
     <include
         layout="@layout/activity_navbar"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

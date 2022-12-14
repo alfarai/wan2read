@@ -42,7 +42,7 @@ import java.io.OutputStream;
 public class Add extends AppCompatActivity {
     public static final int PICK_FILE = 99;
 
-    private ImageView imgBtn;
+    private ImageView imgBtn,settingsBtn;
     EditText subj, pageNo;
     Button uploadBtn, deleteBtn, addBtn, viewBookmarkBtn;
     DBHandler dbHandler;
@@ -98,7 +98,7 @@ public class Add extends AppCompatActivity {
                Boolean checkinsertBook = dbHandler.insertBookDetails(subjectTxt, pageNumTxt);
                if (checkinsertBook == true){
                    Toast.makeText(getApplicationContext(),
-                           "Page sucessfully marked", Toast.LENGTH_SHORT).show();
+                           "Page successfully marked", Toast.LENGTH_SHORT).show();
                }
                else{
                    Toast.makeText(getApplicationContext(),
@@ -112,9 +112,9 @@ public class Add extends AppCompatActivity {
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                int id = Integer.parseInt(String.valueOf(subj.getText()));
+                String subject = String.valueOf(subj.getText());
                 DBHandler deletehandler = new DBHandler(Add.this);
-                deletehandler.DeleteBook(id);
+                deletehandler.DeleteBook(subject);
                 Toast.makeText(getApplicationContext(),
                         "PDF Deleted", Toast.LENGTH_SHORT).show();
             }
@@ -132,7 +132,14 @@ public class Add extends AppCompatActivity {
 
         View navbarView = (View) findViewById(R.id.navbar); //retrieve the id in <include>
         imgBtn = (ImageView) navbarView.findViewById(R.id.nav); //retrieve imgBtn from navbar.xml
-
+        settingsBtn = (ImageView)navbarView.findViewById(R.id.settings);
+        settingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Add.this,Settings.class);
+                startActivity(intent);
+            }
+        });
         //for showing menu items
         PopupMenu popupMenu = new PopupMenu(this, imgBtn);
         popupMenu.getMenuInflater().inflate(R.menu.navitems, popupMenu.getMenu());
@@ -144,16 +151,16 @@ public class Add extends AppCompatActivity {
                         i = new Intent(Add.this, Library.class);
                         startActivity(i);
                         break;
-                    case R.id.menu_view:
-                        i = new Intent(Add.this, View.class);
-                        startActivity(i);
-                        break;
                     case R.id.menu_add:
                         i = new Intent(Add.this, Add.class);
                         startActivity(i);
                         break;
                     case R.id.menu_credits:
                         i = new Intent(Add.this, Credits.class);
+                        startActivity(i);
+                        break;
+                    case R.id.menu_bookmark:
+                        i = new Intent(Add.this, bookmarkList.class);
                         startActivity(i);
                         break;
                 }

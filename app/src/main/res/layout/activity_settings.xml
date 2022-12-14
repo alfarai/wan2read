@@ -25,24 +25,18 @@
                     android:id="@+id/btnDarkMode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingTop="250dp"
                     android:text="Dark Mode"
-                    android:textSize="24sp" />
+                    android:textSize="26sp" />
 
-                //This is for the drop down menu for font size
 
-                <Spinner
-                    android:id="@+id/btnFontSize"
-                    android:layout_width="match_parent"
-                    android:layout_height="43dp"
-                    android:spinnerMode="dropdown"
-                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
             </LinearLayout>
 
             <include
-                layout="@layout/activity_navbar"
                 android:id="@+id/navbar"
+                layout="@layout/activity_navbar"
                 android:clickable="true"
-                android:focusable="true"/>
+                android:focusable="true" />
 
         </RelativeLayout>
     </LinearLayout>

@@ -18,7 +18,8 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     // Thread will sleep for 4 seconds
                     sleep(4*1000);
-
+                    Intent intent=new Intent(MainActivity.this,Settings.class);
+                    startActivityForResult(intent, 2);
                     // After 5 seconds redirect to another intent
                     Intent i=new Intent(getBaseContext(),Library.class);
                     startActivity(i);
@@ -32,4 +33,5 @@ public class MainActivity extends AppCompatActivity {
         // start thread
         background.start();
     }
+
 }

@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/menu_library" android:title="Library" />
-    <item android:id="@+id/menu_view" android:title="View Book" />
     <item android:id="@+id/menu_add" android:title="Add PDF" />
     <item android:id="@+id/menu_credits" android:title="Credits" />
+    <item android:id="@+id/menu_bookmark" android:title="Bookmarks" />
 </menu>

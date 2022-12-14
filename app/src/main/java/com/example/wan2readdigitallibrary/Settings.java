@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,10 +24,10 @@ public class Settings extends AppCompatActivity{
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
 
-    private Switch switchBtn;
+    private Switch switchBtnDark,switchBtnOther,switchBtnOther2;
     private LinearLayout layout;
 
-    private ImageView imgBtn;
+    private ImageView imgBtn,settingsBtn;
 
 
     @Override
@@ -40,13 +41,9 @@ public class Settings extends AppCompatActivity{
         *
         *
         * */
-        Spinner FontSize = (Spinner) findViewById(R.id.btnFontSize);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.arrayFontSizes, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        FontSize.setAdapter(adapter);
 
-        switchBtn = findViewById(R.id.btnDarkMode);
+
+        switchBtnDark = findViewById(R.id.btnDarkMode);
         layout = findViewById(R.id.layout);
 
         pref = getSharedPreferences("com.example.wan2readdigitallibrary", Context.MODE_PRIVATE);
@@ -54,12 +51,12 @@ public class Settings extends AppCompatActivity{
 
         checkSharedPreferences(); //call this method to set preferences when opening activity
 
-        switchBtn.setOnClickListener(new View.OnClickListener(){
+        switchBtnDark.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) { //if button is clicked, save its status in preferences
 
-                if(switchBtn.isChecked()){
+                if(switchBtnDark.isChecked()){
                     editor.putBoolean(getString(R.string.switchTheme),true);
                     editor.commit();
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
@@ -72,10 +69,20 @@ public class Settings extends AppCompatActivity{
             }
         });
 
+
 //this block of code is copypasted for all activities to make navbar functionable
 
         View navbarView = (View) findViewById(R.id.navbar); //retrieve the id in <include>
         imgBtn = (ImageView) navbarView.findViewById(R.id.nav); //retrieve imgBtn from navbar.xml
+        settingsBtn = (ImageView)navbarView.findViewById(R.id.settings);
+        settingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Settings.this,Settings.class);
+                startActivity(intent);
+            }
+        });
+
 
         //for showing menu items
         PopupMenu popupMenu = new PopupMenu(this, imgBtn);
@@ -88,16 +95,16 @@ public class Settings extends AppCompatActivity{
                         i = new Intent(Settings.this,Library.class);
                         startActivity(i);
                         break;
-                    case R.id.menu_view:
-                        i = new Intent(Settings.this,View.class);
-                        startActivity(i);
-                        break;
                     case R.id.menu_add:
                         i = new Intent(Settings.this, Add.class);
                         startActivity(i);
                         break;
                     case R.id.menu_credits:
                         i = new Intent(Settings.this,Credits.class);
+                        startActivity(i);
+                        break;
+                    case R.id.menu_bookmark:
+                        i = new Intent(Settings.this, bookmarkList.class);
                         startActivity(i);
                         break;
                 }
@@ -119,24 +126,26 @@ public class Settings extends AppCompatActivity{
      */
     private void checkSharedPreferences(){
         Boolean switchState = pref.getBoolean(getString(R.string.switchTheme),false); //default state is dark mode is off
-        switchBtn.setChecked(switchState);
+        switchBtnDark.setChecked(switchState);
         if(switchState)
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
         else
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        // check if the request code is same as what is passed  here it is 2
+        if(requestCode==2)
+        {
+            checkSharedPreferences();
+            Log.d("aaa","aaaaaa");
+        }
+    }
 
 }
 
 
-class FontSize extends Activity implements AdapterView.OnItemSelectedListener{
-    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id){
-        //An item was selected . YOu can retrieve the selected item using
-        //parent.getItemAtPosition(pos)
-    }
 
-    public void onNothingSelected(AdapterView<?> parent){
-        //Another interface callback
-    }
-}

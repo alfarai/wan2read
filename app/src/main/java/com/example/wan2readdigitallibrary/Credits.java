@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 
 public class Credits extends AppCompatActivity {
-    private ImageView imgBtn;
+    private ImageView imgBtn,settingsBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,14 @@ public class Credits extends AppCompatActivity {
 
         View navbarView = (View) findViewById(R.id.navbar); //retrieve the id in <include>
         imgBtn = (ImageView) navbarView.findViewById(R.id.nav); //retrieve imgBtn from navbar.xml
-
+        settingsBtn = (ImageView)navbarView.findViewById(R.id.settings);
+        settingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Credits.this,Settings.class);
+                startActivity(intent);
+            }
+        });
         //for showing menu items
         PopupMenu popupMenu = new PopupMenu(this, imgBtn);
         popupMenu.getMenuInflater().inflate(R.menu.navitems, popupMenu.getMenu());
@@ -32,16 +39,16 @@ public class Credits extends AppCompatActivity {
                         i = new Intent(Credits.this,Library.class);
                         startActivity(i);
                         break;
-                    case R.id.menu_view:
-                        i = new Intent(Credits.this, View.class);
-                        startActivity(i);
-                        break;
                     case R.id.menu_add:
                         i = new Intent(Credits.this, Add.class);
                         startActivity(i);
                         break;
                     case R.id.menu_credits:
                         i = new Intent(Credits.this,Credits.class);
+                        startActivity(i);
+                        break;
+                    case R.id.menu_bookmark:
+                        i = new Intent(Credits.this, bookmarkList.class);
                         startActivity(i);
                         break;
                 }
